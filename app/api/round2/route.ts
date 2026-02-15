@@ -3,6 +3,8 @@ import { generateText } from "@/lib/claude";
 import { round2Prompt } from "@/lib/prompts";
 import { Advisor, Position, Rebuttal } from "@/lib/types";
 
+export const maxDuration = 300;
+
 function cleanAnswer(raw: string): string {
   let answer = raw.trim();
   answer = answer.replace(/\*\*/g, "");

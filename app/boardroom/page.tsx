@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Advisor,
   Position,
@@ -25,6 +25,23 @@ export default function BoardroomPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Prevent the browser from killing the page when tab is backgrounded
+  useEffect(() => {
+    if (!loading) return;
+    const interval = setInterval(() => {
+      // Keep-alive: prevents browser from throttling/sleeping this tab
+    }, 1000);
+    // Also prevent accidental navigation away
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [loading]);
+
   const handleSetupComplete = async (config: {
     question: string;
     context: string;
@@ -46,6 +63,7 @@ export default function BoardroomPage() {
           advisors: config.advisors,
           context: config.context || undefined,
         }),
+        signal: AbortSignal.timeout(300000),
       });
 
       const data = await res.json();
@@ -70,6 +88,7 @@ export default function BoardroomPage() {
           advisors: config.advisors,
           positions: data.positions,
         }),
+        signal: AbortSignal.timeout(300000),
       });
 
       const r2data = await r2res.json();
@@ -95,6 +114,7 @@ export default function BoardroomPage() {
           positions: data.positions,
           rebuttals: r2data.rebuttals,
         }),
+        signal: AbortSignal.timeout(300000),
       });
 
       const synthData = await synthRes.json();

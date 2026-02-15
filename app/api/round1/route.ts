@@ -3,6 +3,8 @@ import { generateText } from "@/lib/claude";
 import { round1Prompt } from "@/lib/prompts";
 import { Advisor, Position } from "@/lib/types";
 
+export const maxDuration = 300;
+
 function cleanAnswer(raw: string): string {
   let answer = raw.trim();
   // Strip markdown bold markers

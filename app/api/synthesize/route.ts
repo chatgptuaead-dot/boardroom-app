@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { generateText } from "@/lib/claude";
 import { Advisor, Position, Rebuttal } from "@/lib/types";
 
+export const maxDuration = 300;
+
 export async function POST(request: Request) {
   try {
     const { question, advisors, positions, rebuttals } = await request.json();
