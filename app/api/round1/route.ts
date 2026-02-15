@@ -29,21 +29,14 @@ function parseAnswer(text: string): string {
 }
 
 function extractSummary(text: string): string {
-  // Remove the ANSWER: line before summarizing
-  const cleaned = text.replace(/^ANSWER:.*$/im, "").trim();
-  const paragraphs = cleaned
+  const paragraphs = text
     .split("\n\n")
     .filter((p) => p.trim().length > 50);
-  if (paragraphs.length > 1) {
-    // Take first two paragraphs for more detail
-    const combined = paragraphs.slice(0, 2).map((p) => p.replace(/^[#*]+\s*/, "").trim()).join(" ");
-    return combined.length > 400 ? combined.substring(0, 400) + "..." : combined;
-  }
-  if (paragraphs.length === 1) {
+  if (paragraphs.length > 0) {
     const first = paragraphs[0].replace(/^[#*]+\s*/, "").trim();
-    return first.length > 400 ? first.substring(0, 400) + "..." : first;
+    return first.length > 200 ? first.substring(0, 200) + "..." : first;
   }
-  return cleaned.substring(0, 400) + "...";
+  return text.substring(0, 200) + "...";
 }
 
 export async function POST(request: Request) {

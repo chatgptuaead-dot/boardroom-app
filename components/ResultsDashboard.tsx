@@ -73,19 +73,11 @@ export default function ResultsDashboard({ session }: Props) {
                     <div>{advisor.name}</div>
                     <div className="text-xs text-muted">{advisor.role}</div>
                   </td>
-                  <td className="p-3 max-w-48">
-                    <div className="text-gold text-xs">{pos?.answer}</div>
-                    {pos?.summary && (
-                      <div className="text-xs text-muted mt-1 line-clamp-2">{pos.summary}</div>
-                    )}
+                  <td className="p-3 text-gold text-xs max-w-48">
+                    {pos?.answer}
                   </td>
-                  <td className={`p-3 max-w-48`}>
-                    <div className={`text-xs ${reb?.answerChanged ? "text-gold font-semibold" : "text-muted"}`}>
-                      {reb?.finalAnswer}
-                    </div>
-                    {reb?.summary && (
-                      <div className="text-xs text-muted mt-1 line-clamp-2">{reb.summary}</div>
-                    )}
+                  <td className={`p-3 text-xs max-w-48 ${reb?.answerChanged ? "text-gold font-semibold" : "text-muted"}`}>
+                    {reb?.finalAnswer}
                   </td>
                   <td className="p-3 text-center">
                     {reb?.answerChanged && (
