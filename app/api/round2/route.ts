@@ -9,7 +9,7 @@ function cleanAnswer(raw: string): string {
   answer = answer.replace(/[.,!?;:]+$/g, "");
   answer = answer.replace(/^(of course,?\s*|obviously,?\s*|ultimately,?\s*|well,?\s*|i think\s*|i believe\s*|it's\s+|there's\s+)/i, "");
   const words = answer.split(/\s+/).filter(Boolean);
-  if (words.length > 3) answer = words.slice(0, 3).join(" ");
+  if (words.length > 4) answer = words.slice(0, 4).join(" ");
   answer = answer.toLowerCase();
   return answer;
 }

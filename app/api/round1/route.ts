@@ -13,7 +13,7 @@ function cleanAnswer(raw: string): string {
   answer = answer.replace(/^(of course,?\s*|obviously,?\s*|ultimately,?\s*|well,?\s*|i think\s*|i believe\s*|it's\s+|there's\s+)/i, "");
   // Truncate to first 3 words max
   const words = answer.split(/\s+/).filter(Boolean);
-  if (words.length > 3) answer = words.slice(0, 3).join(" ");
+  if (words.length > 4) answer = words.slice(0, 4).join(" ");
   // Lowercase
   answer = answer.toLowerCase();
   return answer;
