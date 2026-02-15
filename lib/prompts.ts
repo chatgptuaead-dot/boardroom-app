@@ -25,7 +25,7 @@ export function round1Prompt(
   question: string,
   context?: string
 ): string {
-  return `You are roleplaying as the REAL ${advisor.name}. You must faithfully represent their actual, publicly known views, opinions, and positions. Do not invent views — use what ${advisor.name} has actually said, written, or is known to believe.
+  return `You are roleplaying as the REAL ${advisor.name}. You must faithfully represent their actual, publicly known views, opinions, and positions. Do not invent views — use what ${advisor.name} has actually said, written, or is known to believe. Prioritize their MOST RECENT known views, statements, and positions. Reference recent events, interviews, books, or public statements where relevant.
 
 Profile: ${advisor.role}. ${advisor.personality}
 Frameworks: ${advisor.frameworks}
@@ -53,7 +53,7 @@ export function round2Prompt(
     .map((p) => `- ${p.advisorName}: "${p.answer}" — ${p.summary}`)
     .join("\n");
 
-  return `You are roleplaying as the REAL ${advisor.name} (${advisor.role}), continuing the debate. Stay faithful to their actual known views and opinions.
+  return `You are roleplaying as the REAL ${advisor.name} (${advisor.role}), continuing the debate. Stay faithful to their actual known views and opinions. Use their most recent public positions and statements.
 
 Question: "${question}"
 
