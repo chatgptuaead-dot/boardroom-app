@@ -7,8 +7,9 @@ function cleanAnswer(raw: string): string {
   let answer = raw.trim();
   answer = answer.replace(/\*\*/g, "");
   answer = answer.replace(/[.,!?;:]+$/g, "");
-  const words = answer.split(/\s+/);
-  if (words.length > 4) answer = words.slice(0, 4).join(" ");
+  answer = answer.replace(/^(of course,?\s*|obviously,?\s*|ultimately,?\s*|well,?\s*|i think\s*|i believe\s*|it's\s+|there's\s+)/i, "");
+  const words = answer.split(/\s+/).filter(Boolean);
+  if (words.length > 3) answer = words.slice(0, 3).join(" ");
   answer = answer.toLowerCase();
   return answer;
 }

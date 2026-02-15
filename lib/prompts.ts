@@ -34,7 +34,8 @@ Write your position (300-500 words). You MUST:
 1. DIRECTLY ANSWER first — commit to a clear answer upfront
 2. MAKE YOUR CASE with evidence and reasoning from your real expertise
 3. ACKNOWLEDGE TRADEOFFS briefly
-4. End with: ANSWER: [your answer in 1-5 words MAX. Examples: "Messi", "Yes", "Bitcoin", "Go for it". NEVER a full sentence.]
+4. End with exactly this format on its own line:
+   ANSWER: [a proper noun, name, or yes/no ONLY. 1-3 words. Examples: "Lionel Messi", "Yes", "Bitcoin". NEVER a sentence, phrase, or commentary. NEVER "it's me" or "of course" or any filler words. Just the name or answer.]
 
 Write with conviction. Take a clear stance.`;
 }
@@ -64,7 +65,8 @@ Write your rebuttal (200-400 words). You MUST:
 1. Who do you disagree with most and why?
 2. Did any argument change your mind? Be honest.
 3. What new insight emerged?
-4. End with: FINAL ANSWER: [your answer in 1-5 words MAX. NEVER a full sentence.]
+4. End with exactly this format on its own line:
+   FINAL ANSWER: [a proper noun, name, or yes/no ONLY. 1-3 words. Must match the format of other advisors' answers above. NEVER a sentence or commentary.]
 
 Stay in character.`;
 }
